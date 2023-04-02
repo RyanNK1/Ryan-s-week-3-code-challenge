@@ -1,0 +1,18 @@
+{
+  "name": "ryan-s-week-3-code-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/RyanNK1/phase-0-javascript-events-acting-on-events-lab.git)"
+  },
+  "author": "Ryan Ngigi Kimani",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}
