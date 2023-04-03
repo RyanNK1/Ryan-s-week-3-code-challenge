@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   function displayMovieDetails(movie) {
-    const availableTickets = movie.capacity - movie.tickets_sold;
+    let availableTickets = movie.capacity - movie.tickets_sold;
   
     const movieDetailsContainer = document.getElementById("movie-details");
   
@@ -27,7 +27,18 @@ document.addEventListener("DOMContentLoaded", function() {
   
     const availableTicketsElement = document.createElement("p");
     availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
-  
+    const buyTicketBtn = document.createElement("button")  
+    buyTicketBtn.textContent = `Buy Tickets`
+
+    buyTicketBtn.addEventListener("click", function() {
+      if (availableTickets > 0) {
+        availableTickets--;
+        availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
+      } else {
+        alert("Sorry, this showing is sold out!");
+      }
+    });
+
     const movieDetailsItemContainer = document.createElement("div");
     movieDetailsItemContainer.classList.add("movie-details-item");
     movieDetailsItemContainer.appendChild(poster);
@@ -35,8 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
     movieDetailsItemContainer.appendChild(runtime);
     movieDetailsItemContainer.appendChild(showtime);
     movieDetailsItemContainer.appendChild(availableTicketsElement);
-  
+    movieDetailsItemContainer.appendChild(buyTicketBtn);
     movieDetailsContainer.appendChild(movieDetailsItemContainer);
+
   }
   document.addEventListener("DOMContentLoaded", function() {
     fetchMovieData();
@@ -59,16 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
       movieList.appendChild(li);
     });
   }
-  const buyTicketBtn = document.getElementById("buy-ticket-btn");
-const ticketAvailability = document.getElementById("ticket-availability");
+ 
 
-let availableTickets = 10; // Change this value to set the initial number of available tickets
 
-buyTicketBtn.addEventListener("click", function() {
-  if (availableTickets > 0) {
-    availableTickets--;
-    ticketAvailability.textContent = `Available Tickets: ${availableTickets}`;
-  } else {
-    alert("Sorry, this showing is sold out!");
-  }
-});
